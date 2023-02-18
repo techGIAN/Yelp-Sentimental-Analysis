@@ -1,0 +1,65 @@
+Notes for the Project
+
+56K training set will be split into 42K training set + 14K validation set
+Then apply the model on the 14K test set (same as A3Q6)
+
+I. Data Preprocessing -- thinking of doing this in Python; I'll check if Weka can do it, but if not then Python for sure
+- stop word removal
+	- she provided some stop words to use
+	- we can add some more but we have to submit in a txt file?
+	- there could also be numbers and punctuations?
+- stemming
+	- use protor stemming algorithm
+- Feature Extraction/Selection
+	- bag of words ("selecting words as attributes")
+		- keep those that co-occur with a particular category
+		- keep those that do not co-occur with other categories
+		- remove all those that are uniform across all categories
+		- remove all those that are very infrequent (could be unlikely to be met again, just noise or co-occurrence by chance)
+	- Info Gain
+		- measure of the importance of the feature for predicting the classes of documents
+		- "the number of bits of info" gained by knowing the word is present or absent
+- Word Embedding
+	-sort of represent each review as a vector 
+
+In practice:
+1. Rare term removal
+2. Stop word removal
+3. Stemming
+4. Class-dependent method: IG for Feature selction
+
+
+NOTES;
+- Needs further splitting / regex.
+- We may need to remove punctuations???
+- Add more stopwords to the stop list.
+
+- Want more regex!!! -- we're not ready, there are so many more chars to be removed.
+- I'm thinking get the review with the min number of tokens (perhaps scale it by 2 as well) call it K
+- Then filter out and stem
+- Then take the top-K words in each review
+	- cause we know that those top K words are frequent in the review set
+	- so grab each word, then assign (word, count) for each and report the top K in each
+
+- Represent as a tuple for each review
+
+II. Classification Algorithms
+- Machine Learning Approach
+	- Decision Trees
+	- SVMs
+	- NNs
+	- Naive Bayes
+	- Bayesian Networks
+	- Rule-based Classifiers
+- Lexicon-based
+	- Dictionary-based
+	- Corpus-based (Statistical)
+	- Corpus-based (Semantic)
+
+
+- Text Classification Algorithms from Weka:
+	- Multinomial Bayes (MNB)
+	- DMNB (Discriminative Multinominal Naive Bayes Classifier)
+	- Sparse Generative Model
+	- Bayesian Logistic Regression
+
